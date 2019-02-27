@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import axios from 'axios';
 // Components
 import FriendList from './Components/FriendList';
-import FriendCard from './Components/FriendCard';
+import FriendForm from './Components/FriendForm';
 
 import './App.css';
 
@@ -12,7 +12,11 @@ class App extends Component {
     super();
     this.state = {
       friends: [],
-      SearchValue: '',
+      newFriend:{
+        name:'',
+        age: 0,
+        email: '',
+      },
     };  
   }
 
@@ -30,15 +34,33 @@ class App extends Component {
        });
   }
   
+  searchPostsHandler = e => {
+    this.setState({ [e.target.name]:(e.target.value)});
+};
 
   render() {
     return (
       <div className="App">
-        <Route exact path="/" render={props => <FriendList {...props} friends={ this.state.friends} />} />
+        <Route 
+          exact 
+          path="/" 
+          render={
+            props => <FriendList 
+              {...props} 
+              friends={ this.state.friends} 
+            />} 
+        />
         <Route
           exact
-          path="/friends/:name"
-          render={props => (<FriendCard {...props}  />)}
+          path="/addfriend"
+          render={Props => (
+            <FriendForm
+              {...Props}
+              newFriend={this.state.newFriend}
+              changeHandler={this.changeHandler}
+              addFriend={this.addFriend}
+            />
+          )}
         />
       </div>
     );

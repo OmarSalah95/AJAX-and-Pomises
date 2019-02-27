@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
-
 import { Link } from 'react-router-dom';
-import FriendCard from './FriendCard';
+import FriendCard from './FriendForm';
 
  const FriendList = props => {
   
     return (
+
       <div className="friend-list">
         {props.friends.map(friend => (
-          <Link
-            key={friend.id}
-            exact
-            to={`/friend/${friend.name}`}
-            activeClassName="active"
-          >
-            <FriendCard friend={friend} />
-          </Link>
+         <div className="friend-card">
+            <h2>{friend.name}</h2>
+            <div className="age">
+                age: <em>{friend.age}</em>
+            </div>
+            <div className="email">
+                email: <strong>{friend.email}</strong>
+            </div>
+        </div>
         ))}
+        <Link to='/addfriend'>
+            <button>Add Friend</button>
+        </Link>
       </div>
+
     );
 }
 
