@@ -34,12 +34,41 @@ class App extends Component {
        });
   }
   
-  searchPostsHandler = e => {
-    this.setState({ [e.target.name]:(e.target.value)});
-};
+  addFriend = event => {
+    event.preventDefault();;
+      this.setState({
+        newFriend: {
+          ...this.state.newFriend,
+          id: this.state.friends.length + 1
+        }
+      });
+      this.setState({
+        newFriend: {
+          name: "",
+          age: 0,
+          email: ""
+        }
+});
+  }
+
+  changeHandler = (key, value) => {
+    this.setState({
+      newFriend: {
+        ...this.state.newFriend,
+        [key]: value
+      }
+    });
+    
+  };
 
   render() {
-    return (
+    if (!this.state.friends.length || !this.state.friends) {
+      return (
+        <div className="App">
+          <h1>Loading friends...</h1>
+        </div>
+      );
+    } else {return (
       <div className="App">
         <Route 
           exact 
@@ -65,6 +94,7 @@ class App extends Component {
       </div>
     );
   }
+}
 }
 
 export default App;

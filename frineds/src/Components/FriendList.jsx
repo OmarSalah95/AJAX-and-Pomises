@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import FriendCard from './FriendForm';
+
 
  const FriendList = props => {
   
     return (
-
       <div className="friend-list">
         {props.friends.map(friend => (
          <div className="friend-card">
@@ -22,7 +21,6 @@ import FriendCard from './FriendForm';
             <button>Add Friend</button>
         </Link>
       </div>
-
     );
 }
 

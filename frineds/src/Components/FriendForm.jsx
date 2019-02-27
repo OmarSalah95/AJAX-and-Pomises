@@ -39,7 +39,7 @@ class FriendForm extends React.Component {
           />
           <button>Add</button>
         </form>
-        <Link to="/addfriend">
+        <Link to="/">
           <button>Back to list</button>
         </Link>
       </div>
