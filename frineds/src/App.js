@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={FriendList} />
+        <Route exact path="/" render={props => <FriendList {...props} friends={ this.state.friends} />} />
         <Route
           exact
           path="/friends/:name"
