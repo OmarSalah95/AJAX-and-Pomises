@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { Route } from "react-router-dom";
 import axios from 'axios';
 // Components
+import FriendList from './Components/FriendList';
+import FriendCard from './Components/FriendCard';
+
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      friends: []
+      friends: [],
+      SearchValue: '',
     };  
   }
 
@@ -16,7 +20,7 @@ class App extends Component {
     axios     
     .get(`http://localhost:5000/friends`)
        .then(res => {
-         console.log(res.data);
+        //  console.log(res.data);
          this.setState({
            friends: res.data
          });
@@ -30,7 +34,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
+        <Route exact path="/" component={FriendList} />
+        <Route
+          exact
+          path="/friends/:name"
+          render={props => (<FriendCard {...props}  />)}
+        />
       </div>
     );
   }
