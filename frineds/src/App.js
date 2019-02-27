@@ -42,6 +42,12 @@ class App extends Component {
           id: this.state.friends.length + 1
         }
       });
+      
+      axios
+        .post('http://localhost:5000/friends', this.state.newFriend)
+        .then(res => this.setState({friends:res.data}))
+        .catch(err => console.log(err))
+
       this.setState({
         newFriend: {
           name: "",
