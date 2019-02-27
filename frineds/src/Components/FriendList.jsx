@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
             <div className="email">
                 email: <strong>{friend.email}</strong>
             </div>
+            <button onClick={e => props.deleteFriend(e, friend.id)}>Delete Friend</button>
         </div>
         ))}
         <Link to='/addfriend'>

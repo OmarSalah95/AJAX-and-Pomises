@@ -42,7 +42,7 @@ class App extends Component {
           id: this.state.friends.length + 1
         }
       });
-      
+
       axios
         .post('http://localhost:5000/friends', this.state.newFriend)
         .then(res => this.setState({friends:res.data}))
@@ -54,7 +54,16 @@ class App extends Component {
           age: 0,
           email: ""
         }
-});
+      });
+  }
+
+  deleteFriend = (e, id) => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
+    
   }
 
   changeHandler = (key, value) => {
@@ -82,7 +91,8 @@ class App extends Component {
           render={
             props => <FriendList 
               {...props} 
-              friends={ this.state.friends} 
+              friends={ this.state.friends}
+              deleteFriend={this.deleteFriend} 
             />} 
         />
         <Route
