@@ -1,1 +1,29 @@
+body{
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+button{
+  margin: 1% 0;
+}
+.friend-card{
+  background: black;
+  color: white;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 3%;
+}
 
+.friend-form{
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 1%;
+}
+
+.friend-form form{
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: auto;
+}

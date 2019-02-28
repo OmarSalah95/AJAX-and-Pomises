@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import FriendCard from './FriendForm';
+
 
  const FriendList = props => {
   
     return (
-
       <div className="friend-list">
+      <h1>Lambda Friends</h1>
         {props.friends.map(friend => (
          <div className="friend-card">
             <h2>{friend.name}</h2>
@@ -16,13 +16,13 @@ import FriendCard from './FriendForm';
             <div className="email">
                 email: <strong>{friend.email}</strong>
             </div>
+            <button onClick={e => props.deleteFriend(e, friend.id)}>Delete Friend</button>
         </div>
         ))}
         <Link to='/addfriend'>
             <button>Add Friend</button>
         </Link>
       </div>
-
     );
 }
 
