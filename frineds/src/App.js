@@ -34,56 +34,12 @@ class App extends Component {
        });
   }
   
-  addFriend = event => {
-    event.preventDefault();;
-      this.setState({
-        newFriend: {
-          ...this.state.newFriend,
-          id: this.state.friends.length + 1
-        }
-      });
-
-      axios
-        .post('http://localhost:5000/friends', this.state.newFriend)
-        .then(res => this.setState({friends:res.data}))
-        .catch(err => console.log(err))
-
-      this.setState({
-        newFriend: {
-          name: "",
-          age: 0,
-          email: ""
-        }
-      });
-  }
-
-  deleteFriend = (e, id) => {
-    e.preventDefault();
-    axios
-      .delete(`http://localhost:5000/friends/${id}`)
-      .then(res => this.setState({ friends: res.data }))
-      .catch(err => console.log(err))
-    
-  }
-
-  changeHandler = (key, value) => {
-    this.setState({
-      newFriend: {
-        ...this.state.newFriend,
-        [key]: value
-      }
-    });
-    
-  };
+  searchPostsHandler = e => {
+    this.setState({ [e.target.name]:(e.target.value)});
+};
 
   render() {
-    if (!this.state.friends.length ) {
-      return (
-        <div className="App">
-          <h1>Loading friends...</h1>
-        </div>
-      );
-    }else {return (
+    return (
       <div className="App">
         <Route 
           exact 
@@ -91,8 +47,7 @@ class App extends Component {
           render={
             props => <FriendList 
               {...props} 
-              friends={ this.state.friends}
-              deleteFriend={this.deleteFriend} 
+              friends={ this.state.friends} 
             />} 
         />
         <Route
@@ -110,7 +65,6 @@ class App extends Component {
       </div>
     );
   }
-}
 }
 
 export default App;
