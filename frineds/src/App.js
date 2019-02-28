@@ -77,13 +77,13 @@ class App extends Component {
   };
 
   render() {
-    if (!this.state.friends.length || !this.state.friends) {
+    if (!this.state.friends.length ) {
       return (
         <div className="App">
           <h1>Loading friends...</h1>
         </div>
       );
-    } else {return (
+    }else {return (
       <div className="App">
         <Route 
           exact 

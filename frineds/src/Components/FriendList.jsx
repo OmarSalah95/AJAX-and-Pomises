@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
   
     return (
       <div className="friend-list">
+      <h1>Lambda Friends</h1>
         {props.friends.map(friend => (
          <div className="friend-card">
             <h2>{friend.name}</h2>
