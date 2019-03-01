@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
     return (
       <div className="friend-list">
       <h1>Lambda Friends</h1>
+        <Link to='/addfriend'>
+            <button>Add Friend</button>
+        </Link>
         {props.friends.map(friend => (
          <div className="friend-card">
             <h2>{friend.name}</h2>
@@ -19,10 +22,7 @@ import { Link } from 'react-router-dom';
             <button onClick={e => props.deleteFriend(e, friend.id)}>Delete Friend</button>
         </div>
         ))}
-        <Link to='/addfriend'>
-            <button>Add Friend</button>
-        </Link>
-      </div>
+      </div> 
     );
 }
 

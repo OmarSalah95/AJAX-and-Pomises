@@ -27,3 +27,8 @@ button{
   width: 85%;
   margin: auto;
 }
+
+.friend-form form input{
+  margin: 1% 0;
+  text-align: center;
+}

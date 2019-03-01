@@ -14,7 +14,7 @@ class App extends Component {
       friends: [],
       newFriend:{
         name:'',
-        age: 0,
+        age: '',
         email: '',
       },
     };  
@@ -51,7 +51,7 @@ class App extends Component {
       this.setState({
         newFriend: {
           name: "",
-          age: 0,
+          age: "",
           email: ""
         }
       });

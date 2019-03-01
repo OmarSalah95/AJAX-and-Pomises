@@ -40,7 +40,7 @@ class FriendForm extends React.Component {
             }
             value={this.props.newFriend.email}
           />
-          <button>Add</button>
+            <button>Add</button>
         </form>
       </div>
     );
