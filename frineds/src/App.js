@@ -33,7 +33,7 @@ class App extends Component {
          console.log(err);
        });
   }
-  
+
   addFriend = event => {
     event.preventDefault();;
       this.setState({
@@ -77,13 +77,7 @@ class App extends Component {
   };
 
   render() {
-    if (!this.state.friends.length ) {
-      return (
-        <div className="App">
-          <h1>Loading friends...</h1>
-        </div>
-      );
-    }else {return (
+    return (
       <div className="App">
         <Route 
           exact 
@@ -91,8 +85,7 @@ class App extends Component {
           render={
             props => <FriendList 
               {...props} 
-              friends={ this.state.friends}
-              deleteFriend={this.deleteFriend} 
+              friends={ this.state.friends} 
             />} 
         />
         <Route
@@ -110,7 +103,6 @@ class App extends Component {
       </div>
     );
   }
-}
 }
 
 export default App;

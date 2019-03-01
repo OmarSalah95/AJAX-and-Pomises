@@ -5,10 +5,7 @@ class FriendForm extends React.Component {
   render() {
     return (
       <div className="friend-form">
-        <h2>Add Friend</h2>
-        <Link to="/">
-          <button>Back to list</button>
-        </Link>
+        <h2>Made a new friend?</h2>
         <form onSubmit={this.props.addFriend}>
           <input
             className="friend-name"
@@ -42,6 +39,9 @@ class FriendForm extends React.Component {
           />
             <button>Add</button>
         </form>
+        <Link to="/addfriend">
+          <button>Back to list</button>
+        </Link>
       </div>
     );
   }
