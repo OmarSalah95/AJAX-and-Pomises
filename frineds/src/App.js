@@ -14,7 +14,7 @@ class App extends Component {
       friends: [],
       newFriend:{
         name:'',
-        age: 0,
+        age: '',
         email: '',
       },
     };  
@@ -33,10 +33,48 @@ class App extends Component {
          console.log(err);
        });
   }
-  
-  searchPostsHandler = e => {
-    this.setState({ [e.target.name]:(e.target.value)});
-};
+
+  addFriend = event => {
+    event.preventDefault();;
+      this.setState({
+        newFriend: {
+          ...this.state.newFriend,
+          id: this.state.friends.length + 1
+        }
+      });
+
+      axios
+        .post('http://localhost:5000/friends', this.state.newFriend)
+        .then(res => this.setState({friends:res.data}))
+        .catch(err => console.log(err))
+
+      this.setState({
+        newFriend: {
+          name: "",
+          age: "",
+          email: ""
+        }
+      });
+  }
+
+  deleteFriend = (e, id) => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
+    
+  }
+
+  changeHandler = (key, value) => {
+    this.setState({
+      newFriend: {
+        ...this.state.newFriend,
+        [key]: value
+      }
+    });
+    
+  };
 
   render() {
     return (

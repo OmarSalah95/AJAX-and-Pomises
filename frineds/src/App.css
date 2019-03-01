@@ -1,1 +1,19 @@
 
+.friend-form{
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 1%;
+}
+
+.friend-form form{
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: auto;
+}
+
+.friend-form form input{
+  margin: 1% 0;
+  text-align: center;
+}
